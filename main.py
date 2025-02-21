@@ -1,4 +1,5 @@
 import math
+import sys
 
 def format_views(num_of_views):
     if num_of_views < 0:
@@ -29,3 +30,8 @@ def format_views(num_of_views):
         return f"{num_of_views // 1000000}M Views"
     elif num_of_views >= 1000000000:
         return f"{num_of_views // 1000000000}B Views"
+    
+def main():
+    print(format_views(int(sys.argv[1])))
+
+main()
