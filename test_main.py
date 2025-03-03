@@ -3,6 +3,17 @@ from main import format_views
 
 
 class TestFormatViews(unittest.TestCase):
+    def test_non_int(self):
+        with self.assertRaises(ValueError) as ve:
+            format_views("34gb")
+        self.assertEqual("Could not convert num_of_views to integer!", str(ve.exception))
+        with self.assertRaises(ValueError) as ve:
+            format_views("334344asdf")
+        self.assertEqual("Could not convert num_of_views to integer!", str(ve.exception))
+        with self.assertRaises(ValueError) as ve:
+            format_views("asdfa34")
+        self.assertEqual("Could not convert num_of_views to integer!", str(ve.exception))
+
     def test_no_views(self):
         self.assertEqual(format_views(0), "No Views")
         self.assertEqual(format_views(-0), "No Views")

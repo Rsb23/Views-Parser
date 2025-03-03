@@ -2,6 +2,11 @@ import math
 import sys
 
 def format_views(num_of_views):
+    try:
+        num_of_views = int(num_of_views)
+    except ValueError:
+        raise ValueError("Could not convert num_of_views to integer!")
+    
     if num_of_views < 0:
         raise ValueError("Views cannot be negative")
     elif num_of_views == 0 or num_of_views == None:
@@ -31,7 +36,6 @@ def format_views(num_of_views):
     elif num_of_views >= 1000000000:
         return f"{num_of_views // 1000000000}B Views"
     
-def main():
-    print(format_views(int(sys.argv[1])))
 
-main()
+if __name__ == "__main__":
+    print(format_views(sys.argv[1]))
